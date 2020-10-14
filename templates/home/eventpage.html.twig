@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h2>{{ "Détails de l'événement"|trans}}</h2>
+
+    <div class="event">
+        <p>{{ "Restaurant :"}} {{ event.restaurant.name}}</p>
+        <p>{{ "Adresse du restaurant :"}} {{ event.restaurant.adress}}</p>
+        <p>{{ "Date de l'événement :"}} {{ event.date|date('d/m/Y')}}</p>
+        <p>{{ "Heure de l'événement :"}} {{ event.time|date('H:i')}}</p>
+        <a href="{{ path('eventpage',{ id: event.id }) }}" class="btn btn-default btn-xs">Inscription à l'événement</a>
+    </div>
+
+{% endblock %}
