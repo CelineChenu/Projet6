@@ -26,9 +26,15 @@
                         {{ form_row(formUser.birthDate, {'label':'Date de naissance'|trans}) }}
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="form">
+                        {{ form_row(formUser.email, {'label':'email'|trans}) }}
+                    </div>
+                </div>
 
-            <button type="submit" class="btn btn-success">{{"Valider"|trans}}</button>
+                <button type="submit" class="btn btn-success">{{"Valider"|trans}}</button>
+            {{ form_end(formUser) }}
         </div>
     </div>
-    {{ form_end(formUser) }}
+
 {% endblock %}
