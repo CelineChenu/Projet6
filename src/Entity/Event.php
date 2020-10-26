@@ -146,6 +146,12 @@ class Event
         return $this;
     }
 
+    public function hasNotUser($user)
+    {
+        if (!$this->users->contains($user)) return true;
+        return false;
+    }
+
     public function removeUser(User $user): self
     {
         if ($this->users->contains($user)) {

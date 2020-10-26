@@ -9,7 +9,16 @@
         <p>{{ "Adresse du restaurant :"}} {{ event.restaurant.adress}}</p>
         <p>{{ "Date de l'événement :"}} {{ event.date|date('d/m/Y')}}</p>
         <p>{{ "Heure de l'événement :"}} {{ event.time|date('H:i')}}</p>
-        <a href="{{ path('eventpage',{ id: event.id }) }}" class="btn btn-default btn-xs">Inscription à l'événement</a>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') and event.hasNotUser(user) %}
+        <a href="{{ path('addUserToEvent',{ eventId: event.id, userId: user.id }) }}" class="btn btn-default btn-xs">Inscription à l'événement</a>
+            {% elseif is_granted('IS_AUTHENTICATED_FULLY') and not event.hasNotUser(user)  %}
+                {# et la, un petit géranium, non je déconne, le chat, on met le chat là. #}
+        {% else %}
+            <a href="{{ path('app_login') }}" class="btn btn-default btn-xs">Login</a>
+        {% endif %}
+
+
     </div>
 
 {% endblock %}
