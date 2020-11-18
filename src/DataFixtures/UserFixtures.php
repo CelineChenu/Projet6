@@ -16,16 +16,12 @@ class UserFixtures extends Fixture
          $this->passwordEncoder = $passwordEncoder;
      }
 
-public function load(ObjectManager $manager)
-{
-    $user = new User();
-    // ...
+    public function load(ObjectManager $manager)
+    {
+        $user = new User();
 
-             $user->setPassword($this->passwordEncoder->encodePassword(
-                     $user,
-                     'the_new_password'
-                 ));
-
-    // ...
+        $user->setPassword($this->passwordEncoder->encodePassword($user,'pass'));
+        $manager->persist($user);
+        $manager->flush();
 }
 }

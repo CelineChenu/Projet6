@@ -19,6 +19,49 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
+    public function findOld($user)
+    {
+        $date = new \DateTime();
+
+        return $this->createQueryBuilder('e')
+            ->innerJoin('e.users','u')
+            ->where('u.id = :userId')
+            ->andWhere('e.date < :date')
+            ->setParameter(':date',$date)
+            ->setParameter(':userId',$user->getId())
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findFuture($user)
+    {
+        $date = new \DateTime();
+
+        return $this->createQueryBuilder('e')
+            ->innerJoin('e.users','u')
+            ->where('u.id = :userId')
+            ->andWhere('e.date >= :date')
+            ->setParameter(':date',$date)
+            ->setParameter(':userId',$user->getId())
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findLastFive()
+    {
+        $date = new \DateTime();
+
+        return $this->createQueryBuilder('e')
+            ->where('e.date >= :date')
+            ->setParameter(':date',$date)
+            ->orderBy('e.date','DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */

@@ -1,38 +1,35 @@
-<nav class="light-blue lighten-1" role="navigation">
-    <nav>
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<nav>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-            <div class="nav-wrapper">
-                <a href="#!" class="brand-logo">Logo</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="">Mes événements à venir</a></li>
-                    <li><a href="">Mes événements passés</a></li>
-                    <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
-                </ul>
-            </div>
-    </nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">EatTogether</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="{{ path('futureevents') }}">Mes événements à venir</a></li>
+                <li><a href="{{ path('oldevents') }}">Mes événements passés</a></li>
+                <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+            </ul>
+        </div>
 
         <ul class="sidenav" id="mobile-demo">
             <li><a href="/">Accueil</a></li>
-            <li><a href="">Mes événements à venir</a></li>
-            <li><a href="">Mes événements passés</a></li>
+            <li><a href="{{ path('futureevents') }}">Mes événements à venir</a></li>
+            <li><a href="{{ path('oldevents') }}">Mes événements passés</a></li>
             <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
         </ul>
 
-        {% else %}
+    {% else %}
 
-            <div class="nav-wrapper">
-                <a href="#!" class="brand-logo">Logo</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="inscription">Inscription</a></li>
-                    <li><a href="{{ path('app_login') }}">Connexion</a></li>
-                </ul>
-            </div>
-        </nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">EatTogether</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="{{ path('inscription') }}">Inscription</a></li>
+                <li><a href="{{ path('app_login') }}">Connexion</a></li>
+            </ul>
+        </div>
 
         <ul class="sidenav" id="mobile-demo">
             <li><a href="/">Accueil</a></li>
@@ -40,5 +37,6 @@
             <li><a href="{{ path('app_login') }}">Connexion</a></li>
         </ul>
 
-        {% endif %}
+    {% endif %}
 </nav>
+

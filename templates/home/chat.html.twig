@@ -1,0 +1,6 @@
+{% for chat in chats %}
+    <li style="border:1px solid black">
+        {{ chat.user.firstname }} <br/>
+        {{ chat.content }}
+    </li>
+{% endfor %}

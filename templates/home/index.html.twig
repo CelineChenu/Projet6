@@ -1,38 +1,46 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}
-    Hello world
-{% endblock %}
-
 {% block body %}
 
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
-            <h1 class="header center orange-text">Liste des événements</h1>
             <div class="row center">
-                <h5 class="header col s12 light">Choisi ton destin</h5>
+                <h4 class="header center green-text">Prochains événements à venir</h4>
             </div>
             <div class="row center">
-                {% for event in events %}
-                    <tr>
-                        <td><div class="champ"> {{ "Restaurant"|trans}} : {{ event.restaurant.name }}</td>
-                        <td><div class="button">
-                            <a href="{{ path('eventpage',{ id: event.id }) }}" class="btn btn-default btn-xs">Voir l'événement</a>
-                            </div></td>
-                    </tr>
-                {% endfor %}
+                <ul>
+                    {% for event in events %}
+                        <li>
+                            <p>{{ event.restaurant.name }} le {{ event.date|date('d/m/Y') }} à {{ event.time|date('H:i')}}</p>
+                        </li>
+                        <li>
+                            <div class="button">
+                                <a href="{{ path('eventpage',{ id: event.id }) }}" class="btn btn-default btn-xs">
+                                Voir l'événement</a>
+                            </div>
+                        </li>
+                        <br>
+                    {% endfor %}
+                </ul>
             </div>
-            <br><br>
-
+            {% if is_granted('IS_AUTHENTICATED_FULLY')%}
+                <div class="row center">
+                    <h4 class="header center green-text">Créer votre événement</h4>
+                    <div class="button">
+                        <a href="{{ path('listRestaurant') }}" class="btn btn-default btn-xs">
+                            Créer un événement</a>
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
+    <br>
 
-    <footer class="page-footer orange">
+    <footer class="page-footer green">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h5 class="white-text">Company Bio</h5>
-                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+                    <h5 class="white-text">Qui sommes-nous ?</h5>
+                    <p class="grey-text text-lighten-4">EatTogether vous permet de trouver des compagnons de repas lorsque vous souhaitez ne pas manger seul.</p>
 
 
                 </div>
@@ -40,7 +48,7 @@
         </div>
         <div class="footer-copyright">
             <div class="container">
-                Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+                Made by <a class="green-text text-lighten-3" href="http://materializecss.com">Materialize</a>
             </div>
         </div>
     </footer>

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h4 class="header center green-text">Liste des restaurants</h4>
+
+    <ul>
+        {% for restaurant in restaurants %}
+            <li style="display:flex;flex-wrap:wrap;justify-content: space-between">
+                <span>Nom du restaurant : {{restaurant.name}}</span>
+                <span>
+                    <a href="{{ path('restaurant',{ id: restaurant.id }) }}" class="btn btn-default btn-xs">Choisir ce restaurant</a>
+                </span>
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -23,9 +23,9 @@ class Chat
     private $event;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="chats")
      */
-    private $author;
+    private $user;
 
     /**
      * @ORM\Column(type="text")
@@ -54,14 +54,19 @@ class Chat
         return $this;
     }
 
-    public function getAuthor(): ?string
+    public function getUser(): ?User
     {
-        return $this->author;
+        return $this->user;
     }
 
-    public function setAuthor(string $author): self
+    public function setUser($user)
     {
-        $this->author = $author;
+        $this->user = $user;
+    }
+
+    public function setAuthor(string $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

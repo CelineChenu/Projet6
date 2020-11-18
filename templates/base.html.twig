@@ -11,34 +11,24 @@
         <link type="text/css" rel="stylesheet" href="{{ asset('css/materialize.min.css') }}"  media="screen,projection"/>
         <!-- CSS  -->
         <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-
-
-
-
-{% block navbar %}
-    {% include "_navbar.html.twig" %}
-{% endblock %}
-
-
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}EatTogether{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        {% include "_navbar.html.twig" %}
+        
+        {% block body %}
+        {% endblock %}
 
-        {% block body %}{% endblock %}
+        {% include "_footer.html.twig" %}
 
         <!--  Scripts-->
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="{{ asset('js/materialize.min.js') }}"></script>
+        <script src="{{ asset('js/materialize.js') }}"></script>
         <script src="{{ asset('js/init.js') }}"></script>
 
         {% block javascripts %}
-            <script>
-                $(document).ready(function(){
-                    $('.sidenav').sidenav();
-                });
-            </script>
         {% endblock %}
 
     </body>

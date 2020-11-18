@@ -12,6 +12,16 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
+
 select {
     display: inline-block;
+}
+
+#chatContent{
+    border: 1px solid black;
+}
+
+
+.chat:nth-child(even){
+    background: #85dd88;
 }

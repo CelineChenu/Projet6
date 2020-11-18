@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h4 class="center green-text">Mes événements passés</h4>
+
+    <div class="event">
+        <ul>
+            {% for event in events %}
+                <li> {{ event.restaurant.name }}, le {{ event.date|date('d/m/Y')}} à {{ event.time|date('H:i')}} </li>
+                <li>
+                    <div class="button">
+                        <a href="{{ path('eventpage',{ id: event.id }) }}" class="btn btn-default btn-xs">
+                        Voir l'événement</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

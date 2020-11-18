@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h4 class="header center green-text">Informations du restaurant</h4>
+
+    <div class="restaurant">
+        <p>{{ restaurant.name}}</p>
+        <p>{{ restaurant.adress}}</p>
+    </div>
+
+    <div class="row" id="rangee">
+        <div id="colonne" class="col-sm-8">
+            {{ form_start(formEvent) }}
+            {# iterate over each existing tag and render its only field: name #}
+            <div class="form-group">
+                <div class="form">
+                    {{ form_row(formEvent.date, {'label':'Date de l\'événement'}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form">
+                    {{ form_row(formEvent.time, {'label':'Heure'}) }}
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success">{{"Valider"}}</button>
+            {{ form_end(formEvent) }}
+        </div>
+    </div>
+{% endblock %}

@@ -6,6 +6,8 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -55,6 +57,8 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToMany(targetEntity=Event::class, mappedBy="users")
+     * @JoinTable(name="event_user", joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="event_id", referencedColumnName="id", unique=true)} )
      */
     private $events;
 

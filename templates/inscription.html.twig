@@ -1,11 +1,9 @@
 {% extends "base.html.twig" %}
-{% form_theme formUser 'bootstrap_4_layout.html.twig' %}
-{% block title %}
-{% endblock %}
+
 
 {% block body %}
     <div>
-        <h2>{{"Inscription"}}</h2>
+        <h3 class="header center green-text">Inscription</h3>
     </div>
     <div class="row" id="rangee">
         <div id="colonne" class="col-sm-8">
@@ -13,26 +11,31 @@
             {# iterate over each existing tag and render its only field: name #}
                 <div class="form-group">
                     <div class="form">
-                        {{ form_row(formUser.firstName, {'label':'Prénom'|trans, 'attr': {'placeholder': "Prénom"|trans}}) }}
+                        {{ form_row(formUser.firstName, {'label':'Prénom', 'attr': {'placeholder': "Prénom"}}) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form">
-                        {{ form_row(formUser.lastName, {'label':'Nom'|trans, 'attr': {'placeholder': "Nom"|trans}}) }}
+                        {{ form_row(formUser.lastName, {'label':'Nom', 'attr': {'placeholder': "Nom"}}) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form">
-                        {{ form_row(formUser.birthDate, {'label':'Date de naissance'|trans}) }}
+                        {{ form_row(formUser.birthDate, {'label':'Date de naissance'}) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form">
-                        {{ form_row(formUser.email, {'label':'email'|trans}) }}
+                        {{ form_row(formUser.email, {'label':'Email', 'attr': {'placeholder': "Votre adresse email"}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form">
+                        {{ form_row(formUser.password, {'label':'Mot de passe', 'attr': {'placeholder': "Votre mot de passe"}}) }}
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-success">{{"Valider"|trans}}</button>
+                <button type="submit" class="btn btn-success">{{"Valider"}}</button>
             {{ form_end(formUser) }}
         </div>
     </div>
