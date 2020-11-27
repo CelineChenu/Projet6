@@ -24,7 +24,7 @@ class UserType extends AbstractType
         $builder->add('firstName');
         $builder->add('lastName', TextType::class, array('required'=> true));
         $builder->add('birthDate', BirthdayType::class, array(
-            'format' =>'dd/M/yyyy',
+            'format' =>'ddMyyyy',
             'widget' => 'choice',
             'data' => new \DateTime($year.'-01-01')
         ));

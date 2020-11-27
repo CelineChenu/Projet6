@@ -5,7 +5,7 @@
 
     <div class="restaurant">
         <p>{{ restaurant.name}}</p>
-        <p>{{ restaurant.adress}}</p>
+        <p>{{ restaurant.address}}</p>
     </div>
 
     <div class="row" id="rangee">
@@ -15,10 +15,6 @@
             <div class="form-group">
                 <div class="form">
                     {{ form_row(formEvent.date, {'label':'Date de l\'événement'}) }}
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form">
                     {{ form_row(formEvent.time, {'label':'Heure'}) }}
                 </div>
             </div>

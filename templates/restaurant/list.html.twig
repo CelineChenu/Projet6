@@ -3,6 +3,15 @@
 {% block body %}
     <h4 class="header center green-text">Liste des restaurants</h4>
 
+
+    <div class="container">
+        {{
+        render(
+            controller('App\\Controller\\RestaurantController::searchBar')
+        )
+        }}
+    </div>
+
     <ul>
         {% for restaurant in restaurants %}
             <li style="display:flex;flex-wrap:wrap;justify-content: space-between">
@@ -14,4 +23,58 @@
             <br>
         {% endfor %}
     </ul>
+
+    <script type="text/javascript" src="{{ asset('js/bloodhound.jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/typeahead.jquery.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            let restaurants = new Bloodhound(
+                {
+                    datumTokenizer: Bloodhound.tokenizers.whitespace,
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    remote: {
+                        url: "{{ path('handle_search') }}/%QUERY%",
+                        wildcard: '%QUERY%',
+                        filter: function (restaurants)
+                        {
+                            return $.map(restaurants, function (restaurant)
+                            {
+                                return {
+                                    restaurant_id: restaurant.id,
+                                    restaurant_name: restaurant.name,
+                                    restaurant_address: restaurant.address
+                                }
+                            })
+                        }
+                    }
+                })
+            restaurants.initialize();
+            $('#form_query').typeahead(
+                {
+                    hint: true
+                },
+                {
+                    name: 'restaurants',
+                    source: restaurants.ttAdapter(),
+                    display: 'restaurant_address',
+                    templates: {
+                        suggestion: function (data)
+                        {
+                            console.log(data);
+                            return `
+                                <a href='{{ path('restaurant_page') }}/`+data.restaurant_id+`'>
+                                    <span>`+data.restaurant_address+`</span>
+                                    <span>`+data.restaurant_name+`</span>
+                                </div>
+                            `
+                        },
+                        footer: function (query)
+                        {
+                            return '<div class="text-center">Plus de résultats pour '+ query.query +'</div>'
+                        }
+                    }
+                })
+        })
+    </script>
 {% endblock %}

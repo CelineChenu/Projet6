@@ -47,7 +47,7 @@ class MeetingController extends AbstractController
     {
         $user = $this->security->getUser();
 
-        $chats = $this->getDoctrine()->getRepository(Chat::class)->findAll();
+        $chats = $this->getDoctrine()->getRepository(Chat::class)->findBy(['event'=>$event]);
         return $this->render('home/eventpage.html.twig', ['event' =>$event,'user' =>$user,'chats'=>$chats]);
     }
 
@@ -69,7 +69,7 @@ class MeetingController extends AbstractController
         $chat->setCreatedAt(new \DateTime(date("Y-m-d H:i:s")));
         $manager->persist($chat);
         $manager->flush();
-        $chats = $this->getDoctrine()->getRepository(Chat::class)->findAll();
+        $chats = $this->getDoctrine()->getRepository(Chat::class)->findBy(['event'=>$event]);
         return $this->render('home/chat.html.twig', ['chats'=>$chats]);
     }
 

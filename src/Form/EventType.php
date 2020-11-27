@@ -18,7 +18,7 @@ class EventType extends AbstractType
     {
 
         $builder->add('date', DateType::class, array(
-            'format' =>'dd/M/yyyy',
+            'format' =>'ddMyyyy',
             'widget' => 'choice',
             'data' => new \DateTime()
         ));

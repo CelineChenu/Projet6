@@ -6,7 +6,7 @@
 
     <div class="event">
         <p>Restaurant : {{ event.restaurant.name}}</p>
-        <p>{{ event.restaurant.adress}}</p>
+        <p>{{ event.restaurant.address}}</p>
         <p>Date de l'événement : le {{ event.date|date('d/m/Y')}} à  {{ event.time|date('H:i')}}</p>
 
         {% if is_granted('IS_AUTHENTICATED_FULLY')%}
@@ -27,12 +27,7 @@
                 {% endfor %}
                 <h5 class="center green-text">Chat de l'événement</h5>
                 <ul id="chatContent">
-                    {% for chat in chats %}
-                        <li class="chat">
-                            {{ chat.user.firstname }} <br/>
-                            {{ chat.content }}
-                        </li>
-                    {% endfor %}
+                    {% include "home/chat.html.twig" %}
                 </ul>
                 <input type="text" name="newMessage" id="addChat"/>
                 <input type="submit" id="submitAddChat" value="Envoyer"/>
@@ -44,14 +39,12 @@
 
     </div>
     <script>
-        console.log('Hello');
         let eventId = "{{ event.id }}";
         let url = "{{ path('addChat') }}";
-        console.log(url);
         $('#submitAddChat').click(function(){
             let message = $('#addChat').val();
-            console.log(message);
             $('#chatContent').load(url,{"message":message, "eventId":eventId});
+            $('#addChat').val('');
         });
 
     </script>

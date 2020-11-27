@@ -37,7 +37,7 @@ class Restaurant
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $adress;
+    private $address;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -110,14 +110,14 @@ class Restaurant
         return $this;
     }
 
-    public function getAdress(): ?string
+    public function getAddress(): ?string
     {
-        return $this->adress;
+        return $this->address;
     }
 
-    public function setAdress(string $adress): self
+    public function setAddress(string $address): self
     {
-        $this->adress = $adress;
+        $this->address = $address;
 
         return $this;
     }
@@ -132,5 +132,12 @@ class Restaurant
         $this->coordinates = $coordinates;
 
         return $this;
+    }
+
+    public function toArray()
+    {
+        $arr = get_object_vars($this);
+
+        return $arr;
     }
 }

@@ -20,14 +20,14 @@ final class Version20201014164135 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE restaurant ADD adress VARCHAR(255) NOT NULL, ADD coordinates VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE restaurant ADD address VARCHAR(255) NOT NULL, ADD coordinates VARCHAR(255) NOT NULL');
         $this->addSql('ALTER TABLE user CHANGE roles roles LONGTEXT DEFAULT NULL COMMENT \'(DC2Type:array)\'');
     }
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE restaurant DROP adress, DROP coordinates');
+        $this->addSql('ALTER TABLE restaurant DROP address, DROP coordinates');
         $this->addSql('ALTER TABLE user CHANGE roles roles TEXT CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`');
     }
 }

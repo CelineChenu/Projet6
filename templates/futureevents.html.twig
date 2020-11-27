@@ -3,19 +3,18 @@
 {% block body %}
     <h4 class="header center green-text">Mes événements à venir</h4>
 
-    <div class="event">
+    <div class="display_event">
         <ul>
             {% for event in events %}
-                <li> {{ event.restaurant.name }}, le {{ event.date|date('d/m/Y')}} à {{ event.time|date('H:i')}} </li>
-                <li>
-                    <span class="button">
+                <li class="event"> {{ event.restaurant.name }}, le {{ event.date|date('d/m/Y')}} à {{ event.time|date('H:i')}}
+                    <div class="button">
                         <a href="{{ path('eventpage',{ id: event.id }) }}" class="btn btn-default btn-xs">
                         Voir l'événement</a>
-                    </span>
-                    <span class="button">
+                    </div>
+                    <div class="button">
                         <a href="{{ path('restaurant',{ id: event.restaurant.id }) }}" class="btn btn-default btn-xs">
                         Voir le restaurant</a>
-                    </span>
+                    </div>
                 </li>
             {% endfor %}
         </ul>
