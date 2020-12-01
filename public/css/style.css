@@ -13,18 +13,38 @@
 	font-size: inherit;
 }
 
+h5
+{
+    font-size: 1.2rem;
+}
+
+
 select {
     display: inline-block;
 }
 
 #chatContent{
     border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
 }
 
-
-.chat:nth-child(even){
-    background: #85dd88;
+.chat
+{
+    border-bottom: 1px solid lightgray;
 }
+
+.nameChat
+{
+    color:darkgreen;
+    font-weight: bold;
+}
+
+.userChat
+{
+    text-align: right;
+}
+
 
 /** Twitter Typeahead **/
 .twitter-typeahead, .typeahead, .empty-message  {
@@ -133,4 +153,9 @@ label[for=form_query]
 .button
 {
     margin-bottom: 3px;
+}
+
+.btn-success
+{
+    margin-top: 3px;
 }

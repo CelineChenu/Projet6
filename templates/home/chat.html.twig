@@ -1,6 +1,6 @@
 {% for chat in chats %}
-    <li class="chat">
-        {{ chat.user.firstname }} <br/>
+    <li class="chat {% if chat.user.id == app.user.id %}userChat{% endif %}">
+       <div class="nameChat">{{ chat.user.firstname }}</div>
         {{ chat.content }}
     </li>
 {% endfor %}
