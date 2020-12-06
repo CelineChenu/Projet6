@@ -1,4 +1,4 @@
-#A propos du projet
+#a propos du projet
 
 ##EatTogether
 
