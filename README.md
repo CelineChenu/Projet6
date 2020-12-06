@@ -1,12 +1,12 @@
-#a propos du projet
+# A propos du projet
 
-##EatTogether
+## EatTogether
 
 Application de gestion d'événement pour organiser des repas, entre amis, collègues ou inconnus.
 
 ----------
 
-#Installation
+# Installation
 
 $ git clone https://github.com/CelineChenu/Projet6
 
@@ -20,12 +20,12 @@ $ php bin/console doctrine:schema:update
 
 ----------
 
-#Auteur
+# Auteur
 
 Céline Chenu
 
 ----------
 
-#License
+# License
 
 Open source
